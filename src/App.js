@@ -31,7 +31,7 @@ function App() {
     ref.current?.scrollIntoView({ behavior: "smooth" });
   };
   return (
-    <div className="overflow-x-hidden w-screen bg-black text-white min-h-screen px-6 select-none">
+    <div className="overflow-x-hidden bg-black text-white min-h-screen px-6 select-none">
       <Header
         scrollToSection={scrollToSection}
         projectRef={projectRef}

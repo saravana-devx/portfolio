@@ -57,8 +57,9 @@ const skills = [
     skills: [
       { name: "Node.js", image: <IoLogoNodejs /> },
       { name: "Express.js", image: <SiExpress /> },
-      { name: "Spring Boot", image: <SiSpringboot /> },
-      { name: "Java", image: <FaJava /> },
+      { name: "WebSockets", image: <SiSocketdotio /> },
+      // { name: "Spring Boot", image: <SiSpringboot /> },
+      // { name: "Java", image: <FaJava /> },
     ],
   },
   {
@@ -81,16 +82,16 @@ const skills = [
       { name: "GitLab", image: <IoLogoGitlab /> },
     ],
   },
-  {
-    category: "Software Principles",
-    icon: <Code size={28} className="text-green-400" />,
-    skills: [
-      { name: "OOPS", image: <IoLogoJavascript /> },
-      { name: "API Design", image: <TbApi /> },
-      { name: "WebSockets", image: <SiSocketdotio /> },
-      { name: "Microservices", image: <IoLogoJavascript /> },
-    ],
-  },
+  // {
+  //   category: "Software Principles",
+  //   icon: <Code size={28} className="text-green-400" />,
+  //   skills: [
+  //     { name: "OOPS", image: <IoLogoJavascript /> },
+  //     { name: "API Design", image: <TbApi /> },
+      
+  //     { name: "Microservices", image: <IoLogoJavascript /> },
+  //   ],
+  // },
 ];
 
 export default function SkillsSection({ skillsRef }) {

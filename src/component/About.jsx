@@ -3,6 +3,7 @@ import React from "react";
 import profileImage from "../utils/Images/profile.jpeg";
 
 import { motion } from "framer-motion";
+import TypingLaptop from "./TypingLaptop";
 
 const cardVariants = {
   offscreen: (index) => ({
@@ -48,7 +49,7 @@ const About = () => {
           animate={{ opacity: 1 }}
           transition={{ delay: 1, duration: 0.8 }}
         >
-          I started by exploring how things work behind the scenes, which led me
+          I started by exploring how things work behind the scenes, which lead me
           to dive into coding. Fast forward to today, I work with multiple
           languages and frameworks, specializing in{" "}
           <span className="text-green-400 font-medium">
@@ -111,11 +112,12 @@ const About = () => {
         variants={cardVariants}
         custom={1}
       >
-        <img
+        {/* <img
           src={profileImage}
           className="max-w-72 h-72 object-cover rounded-full shadow-lg border-4 border-gray-700"
           alt="Profile-Picture"
-        />
+        /> */}
+        <TypingLaptop />
       </motion.div>
     </motion.div>
   );
