@@ -1,8 +1,9 @@
-import { Code, Database, Cloud, Cpu, Layout } from "lucide-react";
+import { Database, Cloud, Cpu, Layout } from "lucide-react";
 import { BiLogoMongodb, BiLogoTypescript } from "react-icons/bi";
 import { DiRedis } from "react-icons/di";
-import { FaAws, FaJava } from "react-icons/fa";
+import { FaAws } from "react-icons/fa";
 import { GrMysql } from "react-icons/gr";
+import { SiPrisma } from "react-icons/si";
 import {
   IoLogoCss3,
   IoLogoHtml5,
@@ -15,11 +16,10 @@ import { RiTailwindCssFill } from "react-icons/ri";
 import {
   SiApachekafka,
   SiExpress,
+  SiNginx,
   SiRedux,
   SiSocketdotio,
-  SiSpringboot,
 } from "react-icons/si";
-import { TbApi } from "react-icons/tb";
 
 const cardVariants = {
   offscreen: (index) => ({
@@ -47,51 +47,40 @@ const skills = [
       { name: "TailwindCSS", image: <RiTailwindCssFill /> },
       { name: "JavaScript", image: <IoLogoJavascript /> },
       { name: "TypeScript", image: <BiLogoTypescript /> },
-      { name: "Redux", image: <SiRedux /> },
       { name: "React.js", image: <IoLogoReact /> },
+      { name: "Redux", image: <SiRedux /> },
     ],
   },
   {
-    category: "Backend",
+    category: "Backend & APIs",
     icon: <Cpu size={28} className="text-green-400" />,
     skills: [
       { name: "Node.js", image: <IoLogoNodejs /> },
       { name: "Express.js", image: <SiExpress /> },
       { name: "WebSockets", image: <SiSocketdotio /> },
-      // { name: "Spring Boot", image: <SiSpringboot /> },
-      // { name: "Java", image: <FaJava /> },
+      { name: "Redis", image: <DiRedis /> },
+      { name: "Kafka", image: <SiApachekafka /> },
     ],
   },
   {
-    category: "Databases",
+    category: "Databases & ORM",
     icon: <Database size={28} className="text-green-400" />,
     skills: [
       { name: "MongoDB", image: <BiLogoMongodb /> },
-      { name: "Prisma", image: <IoLogoJavascript /> },
       { name: "MySQL", image: <GrMysql /> },
+      { name: "Prisma", image: <SiPrisma /> },
     ],
   },
   {
     category: "DevOps & Cloud",
     icon: <Cloud size={28} className="text-green-400" />,
     skills: [
-      { name: "AWS", image: <FaAws /> },
       { name: "Docker", image: <IoLogoDocker /> },
-      { name: "Redis", image: <DiRedis /> },
-      { name: "Kafka", image: <SiApachekafka /> },
+      { name: "AWS", image: <FaAws /> },
       { name: "GitLab", image: <IoLogoGitlab /> },
+      { name: "Nginx", image: <SiNginx /> },
     ],
   },
-  // {
-  //   category: "Software Principles",
-  //   icon: <Code size={28} className="text-green-400" />,
-  //   skills: [
-  //     { name: "OOPS", image: <IoLogoJavascript /> },
-  //     { name: "API Design", image: <TbApi /> },
-      
-  //     { name: "Microservices", image: <IoLogoJavascript /> },
-  //   ],
-  // },
 ];
 
 export default function SkillsSection({ skillsRef }) {

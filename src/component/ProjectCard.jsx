@@ -1,8 +1,8 @@
 import React from "react";
 import { ExternalLink } from "lucide-react";
-import { Link } from "react-router-dom";
 
 const ProjectCard = ({ title, thumbnail, techStack, description, link }) => {
+  console.log(link);
   return (
     <div className="bg-gray-900 border border-gray-700 rounded-lg p-4 w-[350px] md:w-[480px] shadow-lg">
       {/* Thumbnail */}
@@ -15,12 +15,12 @@ const ProjectCard = ({ title, thumbnail, techStack, description, link }) => {
       {/* Title & Link */}
       <div className="flex justify-between items-center mt-4">
         <h2 className="text-lg font-semibold text-white">{title}</h2>
-        <Link to={link}>
+        <a href={link} target="_blank" rel="noopener noreferrer">
           <ExternalLink
             size={20}
             className="text-gray-400 hover:text-green-400"
           />
-        </Link>
+        </a>
       </div>
 
       {/* Tech Stack Badges */}

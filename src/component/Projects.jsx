@@ -8,10 +8,12 @@ import { IoLogoReact } from "react-icons/io5";
 import { motion } from "framer-motion";
 
 import ProjectCard from "./ProjectCard";
+import { SiJsonwebtokens, SiMicroeditor, SiTypescript } from "react-icons/si";
+import { FaStripeS } from "react-icons/fa";
 
 const projects = [
   {
-    title: "E-Learning Platform",
+    title: "EduCrew (E-Learning Platform)",
     thumbnail: project1Image,
     tools: [
       {
@@ -19,24 +21,29 @@ const projects = [
         name: "MERN",
       },
       {
-        icon: <IoLogoReact />,
+        icon: <SiTypescript />,
         name: "TypeScript",
       },
       {
         icon: <IoLogoReact />,
         name: "TanStack",
       },
+      // {
+      //   icon: <SiJsonwebtokens />,
+      //   name: "JWT",
+      // },
       {
-        icon: <IoLogoReact />,
-        name: "JWT",
-      },
+        icon : <FaStripeS />,
+        name : "Stripe"
+      }
     ],
     description:
       "A MERN-based E-Learning Platform enabling users to enroll in courses, track progress, and manage learning efficiently. It includes student, instructor, and admin dashboards, along with secure payment integration. Instructors can create, update, and delete courses easily. The backend is secured with Helmet, Morgan, and Rate Limiting to prevent attacks.",
+    link: "https://educrew.onrender.com/",
   },
 
   {
-    title: "Blog Website",
+    title: "InkVerse (Blog Website)",
     thumbnail: project2Image,
     tools: [
       {
@@ -44,16 +51,17 @@ const projects = [
         name: "MERN",
       },
       {
-        icon: <IoLogoReact />,
+        icon: <SiJsonwebtokens />,
         name: "JWT",
       },
       {
-        icon: <IoLogoReact />,
+        icon: <SiMicroeditor />,
         name: "Editor.js",
       },
     ],
     description:
       "A dynamic blogging platform where users can create, edit, and share articles. It includes rich text editing (Editor.js), user authentication, and JWT-based authorization. The site is optimized for SEO and performance, allowing bloggers to reach a wider audience. Built with MERN stack, it supports features like draft saving, comment sections, and category-based filtering",
+    link: "https://inkverse-frontend.onrender.com/",
   },
 ];
 
@@ -104,6 +112,7 @@ const Projects = ({ projectRef }) => {
               thumbnail={project.thumbnail}
               techStack={project.tools}
               description={project.description}
+              link={project.link}
             />
           </motion.div>
         ))}
