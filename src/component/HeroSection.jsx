@@ -92,7 +92,7 @@ const HeroSection = () => {
           <span className="text-lg font-semibold">Github</span>
         </Link>
         <Link
-          to="/"
+          to="https://www.linkedin.com/in/saravana-senguthuvar-548434349/"
           className="bg-gray-800 hover:bg-gray-700 text-white px-4 py-2 rounded flex items-center space-x-2"
         >
           <FaLinkedin className="text-green-400" />

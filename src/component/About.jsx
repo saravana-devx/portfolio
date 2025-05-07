@@ -1,6 +1,6 @@
 import React from "react";
 
-import profileImage from "../utils/Images/profile.jpeg";
+// import profileImage from "../utils/Images/profile.jpeg";
 
 import { motion } from "framer-motion";
 import TypingLaptop from "./TypingLaptop";
@@ -40,49 +40,37 @@ const About = () => {
           transition={{ delay: 0.5, duration: 0.6 }}
         >
           Hey! I'm <span className="text-green-400 font-medium">Saravana</span>,
-          a passionate self-taught developer who has been fascinated by
-          computers and technology from an early age.
+          a passionate self-taught developer who's been fascinated by computers
+          and technology from an early age.
         </motion.p>
         <motion.p
-          className=" text-gray-400 mt-4"
+          className="text-gray-400 mt-4"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1, duration: 0.8 }}
         >
-          I started by exploring how things work behind the scenes, which lead me
-          to dive into coding. Fast forward to today, I work with multiple
-          languages and frameworks, specializing in{" "}
+          I started by exploring how things work behind the scenes, which led me
+          to dive into coding. Over time, I’ve worked with various languages and
+          frameworks, focusing on{" "}
           <span className="text-green-400 font-medium">
             full-stack development
-          </span>{" "}
-          and
-          <span className="text-green-400 font-medium">
-            {" "}
-            cloud technologies
           </span>
-          . I've had the opportunity to contribute to
-          <span className="text-green-400 font-medium">
-            {" "}
-            open-source projects
-          </span>{" "}
-          and work with{" "}
-          <span className="text-green-400 font-medium">
-            scalable backend systems
-          </span>
-          .
+          . I’m also learning{" "}
+          <span className="text-green-400 font-medium">cloud technologies </span>
+          like AWS and expanding my knowledge in backend systems.
         </motion.p>
         <motion.p
-          className=" text-gray-400 mt-4"
+          className="text-gray-400 mt-4"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.5, duration: 0.8 }}
         >
           I'm always looking to{" "}
           <span className="text-green-400 font-medium">
-            build something impactful
+            build impactful projects
           </span>
-          , optimize performance, and automate tasks through code. Currently,
-          I'm focused on{" "}
+          , improve performance, and automate workflows. Currently, I'm focused
+          on{" "}
           <span className="text-green-400 font-medium">
             Web Development, Microservices, and DevOps
           </span>

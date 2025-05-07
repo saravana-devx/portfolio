@@ -1,5 +1,3 @@
-import { motion } from "framer-motion";
-
 import { useState, useEffect, useRef } from "react";
 
 const TypingLaptop = () => {
@@ -56,6 +54,7 @@ const TypingLaptop = () => {
       clearTimeout(timeout);
       clearInterval(interval);
     };
+    // eslint-disable-next-line
   }, []);
 
   return (

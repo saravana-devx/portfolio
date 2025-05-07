@@ -6,7 +6,7 @@ import { Menu, X } from "lucide-react";
 import { AnimatePresence } from "framer-motion";
 import { motion } from "framer-motion";
 
-import cv from "../utils/sample.pdf";
+import cv from "../utils/resume.pdf";
 
 const Header = ({ scrollToSection, projectRef, skillsRef, contactRef }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -82,14 +82,14 @@ const Header = ({ scrollToSection, projectRef, skillsRef, contactRef }) => {
             className="absolute top-16 left-0 w-full bg-gray-900 text-white flex flex-col space-y-6 py-6 text-center md:hidden z-50"
           >
             <Link
-              to="/"
+              to="//portfolio/"
               className="hover:text-green-400"
               onClick={() => setIsOpen(false)}
             >
               Home
             </Link>
             <Link
-              to="/projects"
+              to="/portfolio/projects"
               className="hover:text-green-400"
               onClick={() => {
                 setIsOpen(false);
@@ -99,7 +99,7 @@ const Header = ({ scrollToSection, projectRef, skillsRef, contactRef }) => {
               Projects
             </Link>
             <Link
-              to="/skills"
+              to="/portfolio/skills"
               className="hover:text-green-400"
               onClick={() => {
                 setIsOpen(false);
@@ -109,7 +109,7 @@ const Header = ({ scrollToSection, projectRef, skillsRef, contactRef }) => {
               Skills
             </Link>
             <Link
-              to="/contact"
+              to="/portfolio/contact"
               className="hover:text-green-400"
               onClick={() => {
                 setIsOpen(false);

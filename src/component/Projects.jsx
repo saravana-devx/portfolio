@@ -8,7 +8,12 @@ import { IoLogoReact } from "react-icons/io5";
 import { motion } from "framer-motion";
 
 import ProjectCard from "./ProjectCard";
-import { SiJsonwebtokens, SiMicroeditor, SiTypescript } from "react-icons/si";
+import {
+  SiJsonwebtokens,
+  SiMicroeditor,
+  SiReactquery,
+  SiTypescript,
+} from "react-icons/si";
 import { FaStripeS } from "react-icons/fa";
 
 const projects = [
@@ -25,17 +30,13 @@ const projects = [
         name: "TypeScript",
       },
       {
-        icon: <IoLogoReact />,
+        icon: <SiReactquery />,
         name: "TanStack",
       },
-      // {
-      //   icon: <SiJsonwebtokens />,
-      //   name: "JWT",
-      // },
       {
-        icon : <FaStripeS />,
-        name : "Stripe"
-      }
+        icon: <FaStripeS />,
+        name: "Stripe",
+      },
     ],
     description:
       "A MERN-based E-Learning Platform enabling users to enroll in courses, track progress, and manage learning efficiently. It includes student, instructor, and admin dashboards, along with secure payment integration. Instructors can create, update, and delete courses easily. The backend is secured with Helmet, Morgan, and Rate Limiting to prevent attacks.",
