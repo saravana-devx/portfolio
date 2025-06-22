@@ -6,16 +6,16 @@ import { Menu, X } from "lucide-react";
 import { AnimatePresence } from "framer-motion";
 import { motion } from "framer-motion";
 
-import cv from "../utils/resume.pdf";
+import resume from "../utils/saravana-resume.pdf";
 
 const Header = ({ scrollToSection, projectRef, skillsRef, contactRef }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const onButtonClick = () => {
-    const pdfUrl = cv;
+    const pdfUrl = resume;
     const link = document.createElement("a");
     link.href = pdfUrl;
-    link.download = "saravana-cv.pdf";
+    link.download = "saravana-resume.pdf";
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
