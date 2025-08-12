@@ -43,9 +43,3 @@ npm run dev
 ```
 
 The site will be running at `http://localhost:3000`
-
-## 📫 Contact
-
-- **GitHub**: https://github.com/yourusername
-- **LinkedIn**: https://linkedin.com/in/yourprofile
-- **Email**: your.email@example.com
