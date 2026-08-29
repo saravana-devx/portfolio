@@ -1,124 +1,120 @@
 import React from "react";
-
-import project1Image from "../utils/Images/project1.png";
-import project2Image from "../utils/Images/project2.png";
-
-import { MoveRight } from "lucide-react";
-import { IoLogoReact } from "react-icons/io5";
 import { motion } from "framer-motion";
-
-import ProjectCard from "./ProjectCard";
-import {
-  SiJsonwebtokens,
-  SiMicroeditor,
-  SiReactquery,
-  SiTypescript,
-} from "react-icons/si";
-import { FaStripeS } from "react-icons/fa";
+import { FaGithub } from "react-icons/fa";
+import { SiGo, SiPostgresql, SiRabbitmq, SiPrometheus } from "react-icons/si";
+import { DiRedis } from "react-icons/di";
+import { IoLogoDocker } from "react-icons/io5";
+import SectionIntro from "./SectionIntro";
 
 const projects = [
   {
-    title: "EduCrew (E-Learning Platform)",
-    thumbnail: project1Image,
-    tools: [
-      {
-        icon: <IoLogoReact />,
-        name: "MERN",
-      },
-      {
-        icon: <SiTypescript />,
-        name: "TypeScript",
-      },
-      {
-        icon: <SiReactquery />,
-        name: "TanStack",
-      },
-      {
-        icon: <FaStripeS />,
-        name: "Stripe",
-      },
-    ],
+    title: "Distributed Rate Limiter",
+    period: "Jul 2026 – Aug 2026",
     description:
-      "A MERN-based E-Learning Platform enabling users to enroll in courses, track progress, and manage learning efficiently. It includes student, instructor, and admin dashboards, along with secure payment integration. Instructors can create, update, and delete courses easily. The backend is secured with Helmet, Morgan, and Rate Limiting to prevent attacks.",
-    link: "https://educrew.onrender.com/",
+      "Production-grade rate limiting sidecar in Go. Implements fixed window, sliding window log, and token bucket algorithms as atomic Redis Lua scripts — eliminating race conditions under concurrent load. Cache-aside pattern keeps the hot-path to two Redis calls with no DB query on cached requests. API key auth middleware, Prometheus metrics, and Retry-After headers on 429 responses.",
+    tags: ["Go", "Redis", "PostgreSQL", "Docker", "Prometheus", "Lua"],
+    icons: [
+      <SiGo key="go" />,
+      <DiRedis key="redis" />,
+      <SiPostgresql key="postgresql" />,
+      <IoLogoDocker key="docker" />,
+      <SiPrometheus key="prometheus" />,
+    ],
+    github: "https://github.com/saravana-devx/Distributed-rate-limiter",
+    highlights: [
+      "3 algorithms as atomic Lua scripts",
+      "Cache-aside — 2 Redis calls per request",
+      "Prometheus metrics + Retry-After header",
+    ],
   },
-
   {
-    title: "InkVerse (Blog Website)",
-    thumbnail: project2Image,
-    tools: [
-      {
-        icon: <IoLogoReact />,
-        name: "MERN",
-      },
-      {
-        icon: <SiJsonwebtokens />,
-        name: "JWT",
-      },
-      {
-        icon: <SiMicroeditor />,
-        name: "Editor.js",
-      },
-    ],
+    title: "JobFlow — Distributed Job Scheduler",
+    period: "May 2026 – Jun 2026",
     description:
-      "A dynamic blogging platform where users can create, edit, and share articles. It includes rich text editing (Editor.js), user authentication, and JWT-based authorization. The site is optimized for SEO and performance, allowing bloggers to reach a wider audience. Built with MERN stack, it supports features like draft saving, comment sections, and category-based filtering",
-    link: "https://inkverse-frontend.onrender.com/",
+      "Complete background job scheduling service in Go with RabbitMQ as the message broker. Worker pool, priority queuing, per-job retry limits, and dead-letter queue for failed jobs. JobReconciler cron closes the dual-write gap between DB commit and queue publish. Real-time SSE updates via Redis pub/sub. JWT auth with JTI store for token revocation.",
+    tags: ["Go", "RabbitMQ", "Redis", "PostgreSQL", "Docker", "SSE"],
+    icons: [
+      <SiGo key="go" />,
+      <SiRabbitmq key="rabbitmq" />,
+      <DiRedis key="redis" />,
+      <SiPostgresql key="postgresql" />,
+      <IoLogoDocker key="docker" />,
+    ],
+    github: "https://github.com/saravana-devx/Jobflow",
+    highlights: [
+      "JobReconciler closes dual-write gap",
+      "Real-time SSE via Redis pub/sub",
+      "JWT + JTI store for token revocation",
+    ],
   },
 ];
 
-const cardVariants = {
-  offscreen: (index) => ({
-    x: index % 2 === 0 ? -200 : 200, // Left for even, right for odd
-    opacity: 0, // Initially invisible
-  }),
-  onscreen: {
-    x: 0, // Move to the original position
-    opacity: 1, // Fully visible
-    transition: {
-      type: "tween", // Smooth transition instead of spring
-      ease: "easeIn", // Ease-in effect
-      duration: 0.8, // Animation duration
-    },
-  },
-};
-
 const Projects = ({ projectRef }) => {
   return (
-    <div className="mt-32 max-w-6xl mx-auto " ref={projectRef}>
-      <h2 className="text-4xl font-bold text-green-400 leading-tight">
-        All Creative Works
-      </h2>
+    <section ref={projectRef} className="space-y-10">
+      <SectionIntro
+        eyebrow="Projects"
+        heading="Systems built to survive real operational edge cases."
+        headingClassName="max-w-2xl"
+      />
 
-      <p className="text-gray-400 text-lg">
-        Here are some of the projects I have worked on.
-      </p>
-
-      <p className="flex items-center gap-2 font-semibold mb-4 text-green-400 hover:text-green-300 transition mt-3 text-lg">
-        Explore more <MoveRight />
-      </p>
-
-      <motion.div className="flex flex-wrap justify-center items-center gap-6">
+      <div className="space-y-10">
         {projects.map((project, index) => (
           <motion.div
-            initial="offscreen"
-            whileInView="onscreen"
-            // viewport={{ amount: 0.8 }}
-            viewport={{ amount: 0.2 }}
-            variants={cardVariants}
-            custom={index}
             key={index}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.5, delay: index * 0.1 }}
+            className="border-t border-white/10 pt-8"
           >
-            <ProjectCard
-              title={project.title}
-              thumbnail={project.thumbnail}
-              techStack={project.tools}
-              description={project.description}
-              link={project.link}
-            />
+            <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-4">
+              <div>
+                <h3 className="text-xl font-bold text-white">{project.title}</h3>
+                <p className="mt-2 font-mono text-sm text-slate-500">{project.period}</p>
+              </div>
+              <a
+                href={project.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex shrink-0 items-center gap-2 rounded-full border border-white/10 px-4 py-2 font-mono text-sm text-slate-300 transition-all duration-200 hover:border-amber-300/40 hover:text-amber-200"
+              >
+                <FaGithub size={14} /> View on GitHub
+              </a>
+            </div>
+
+            <p className="mb-6 text-base leading-8 text-slate-300/82">{project.description}</p>
+
+            <div className="flex flex-col gap-5 border-t border-white/8 pt-5">
+              <ul className="space-y-1">
+                {project.highlights.map((h, i) => (
+                  <li key={i} className="flex items-center gap-2 font-mono text-sm text-slate-400">
+                    <span className="text-amber-300">→</span> {h}
+                  </li>
+                ))}
+              </ul>
+              <div className="flex flex-wrap gap-3 text-xl text-slate-400">
+                {project.icons.map((icon, i) => (
+                  <span key={i} className="rounded-full border border-white/8 p-3">
+                    {icon}
+                  </span>
+                ))}
+              </div>
+              <div className="flex flex-wrap gap-2">
+                {project.tags.map((tag, i) => (
+                  <span
+                    key={i}
+                    className="rounded-full border border-white/10 px-3 py-1 font-mono text-xs text-slate-300"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </div>
           </motion.div>
         ))}
-      </motion.div>
-    </div>
+      </div>
+    </section>
   );
 };
 

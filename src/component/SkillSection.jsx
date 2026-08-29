@@ -1,122 +1,107 @@
-import { Database, Cloud, Cpu, Layout } from "lucide-react";
+import React from "react";
+import { motion } from "framer-motion";
 import { BiLogoMongodb, BiLogoTypescript } from "react-icons/bi";
 import { DiRedis } from "react-icons/di";
 import { FaAws } from "react-icons/fa";
 import { GrMysql } from "react-icons/gr";
-import { SiPrisma } from "react-icons/si";
-import {
-  IoLogoCss3,
-  IoLogoHtml5,
-  IoLogoJavascript,
-  IoLogoNodejs,
-} from "react-icons/io";
-import { motion } from "framer-motion";
-import { IoLogoDocker, IoLogoGitlab, IoLogoReact } from "react-icons/io5";
+import { IoLogoNodejs } from "react-icons/io";
+import { IoLogoDocker, IoLogoReact } from "react-icons/io5";
 import { RiTailwindCssFill } from "react-icons/ri";
 import {
   SiApachekafka,
   SiExpress,
-  SiNginx,
   SiRedux,
   SiSocketdotio,
+  SiGo,
+  SiGraphql,
+  SiPostgresql,
+  SiClickhouse,
+  SiRabbitmq,
+  SiCloudflare,
+  SiPrometheus,
+  SiNextdotjs,
 } from "react-icons/si";
+import TanstackIcon from "../assets/Logos/Tanstack.jsx";
+import SectionIntro from "./SectionIntro";
 
-const cardVariants = {
-  offscreen: (index) => ({
-    x: index % 2 === 0 ? -200 : 200,
-    opacity: 0,
-  }),
-  onscreen: {
-    x: 0,
-    opacity: 1,
-    transition: {
-      type: "tween",
-      ease: "easeIn",
-      duration: 0.8,
-    },
-  },
-};
-
-const skills = [
+const skillGroups = [
   {
     category: "Frontend",
-    icon: <Layout size={28} className="text-green-400" />,
     skills: [
-      { name: "HTML", image: <IoLogoHtml5 /> },
-      { name: "CSS", image: <IoLogoCss3 /> },
-      { name: "TailwindCSS", image: <RiTailwindCssFill /> },
-      { name: "JavaScript", image: <IoLogoJavascript /> },
-      { name: "TypeScript", image: <BiLogoTypescript /> },
-      { name: "React.js", image: <IoLogoReact /> },
-      { name: "Redux", image: <SiRedux /> },
+      { name: "React.js", icon: <IoLogoReact /> },
+      { name: "Next.js", icon: <SiNextdotjs /> },
+      { name: "TypeScript", icon: <BiLogoTypescript /> },
+      { name: "Redux", icon: <SiRedux /> },
+      { name: "TanStack", icon: <TanstackIcon /> },
+      { name: "Tailwind", icon: <RiTailwindCssFill /> },
     ],
   },
   {
-    category: "Backend & APIs",
-    icon: <Cpu size={28} className="text-green-400" />,
+    category: "Backend",
     skills: [
-      { name: "Node.js", image: <IoLogoNodejs /> },
-      { name: "Express.js", image: <SiExpress /> },
-      { name: "WebSockets", image: <SiSocketdotio /> },
-      { name: "Redis", image: <DiRedis /> },
-      { name: "Kafka", image: <SiApachekafka /> },
+      { name: "Go", icon: <SiGo /> },
+      { name: "Node.js", icon: <IoLogoNodejs /> },
+      { name: "Express.js", icon: <SiExpress /> },
+      { name: "GraphQL", icon: <SiGraphql /> },
+      { name: "WebSocket", icon: <SiSocketdotio /> },
+      { name: "SSE", icon: <SiSocketdotio /> },
     ],
   },
   {
-    category: "Databases & ORM",
-    icon: <Database size={28} className="text-green-400" />,
+    category: "Databases",
     skills: [
-      { name: "MongoDB", image: <BiLogoMongodb /> },
-      { name: "MySQL", image: <GrMysql /> },
-      { name: "Prisma", image: <SiPrisma /> },
+      { name: "PostgreSQL", icon: <SiPostgresql /> },
+      { name: "ClickHouse", icon: <SiClickhouse /> },
+      { name: "MongoDB", icon: <BiLogoMongodb /> },
+      { name: "MySQL", icon: <GrMysql /> },
+      { name: "Redis", icon: <DiRedis /> },
     ],
   },
   {
-    category: "DevOps & Cloud",
-    icon: <Cloud size={28} className="text-green-400" />,
+    category: "Infra & Cloud",
     skills: [
-      { name: "Docker", image: <IoLogoDocker /> },
-      { name: "AWS", image: <FaAws /> },
-      { name: "GitLab", image: <IoLogoGitlab /> },
-      { name: "Nginx", image: <SiNginx /> },
+      { name: "Docker", icon: <IoLogoDocker /> },
+      { name: "RabbitMQ", icon: <SiRabbitmq /> },
+      { name: "Kafka", icon: <SiApachekafka /> },
+      { name: "Cloudflare", icon: <SiCloudflare /> },
+      { name: "AWS", icon: <FaAws /> },
+      { name: "Prometheus", icon: <SiPrometheus /> },
     ],
   },
 ];
 
 export default function SkillsSection({ skillsRef }) {
   return (
-    <div ref={skillsRef} className="mt-32 max-w-6xl mx-auto">
-      <h2 className="text-3xl font-semibold text-green-400 mb-6">🚀 Skills</h2>
+    <section ref={skillsRef} className="grid gap-8 lg:grid-cols-[0.78fr_1.22fr]">
+      <SectionIntro eyebrow="Skills" heading="Tools I reach for when the work gets serious." />
 
-      <motion.div className="grid grid-cols-1 sm:grid-cols-2 gap-6 text-gray-300">
-        {skills.map((skill, index) => (
+      <div className="grid grid-cols-1 gap-x-8 gap-y-10 md:grid-cols-2">
+        {skillGroups.map((group, i) => (
           <motion.div
-            initial="offscreen"
-            whileInView="onscreen"
-            // viewport={{ amount: 0.2, once: true }}
-            viewport={{ amount: window.innerWidth < 768 ? 0.2 : 0.5 }}
-            variants={cardVariants}
-            custom={index}
-            key={index}
-            className="bg-gray-800 p-6 md:w-[540px] rounded-xl shadow-lg flex flex-col items-center"
+            key={i}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.5, delay: i * 0.1 }}
+            className="border-t border-white/10 pt-6"
           >
-            <span className="w-12 h-8">{skill.icon}</span>
-            <h3 className="text-xl font-medium text-green-400">
-              {skill.category}
+            <h3 className="mb-5 font-mono text-sm uppercase tracking-[0.28em] text-amber-300/80">
+              {group.category}
             </h3>
-            <div className="flex flex-wrap justify-center items-center mt-3 gap-3">
-              {skill.skills.map((s, idx) => (
-                <div key={idx} className="flex items-center">
-                  <div className="flex flex-col justify-center items-center mr-4">
-                    <span className="text-green-400 text-2xl">{s.image}</span>
-                    <p className="text-lg mt-1">{s.name}</p>
-                  </div>
+            <div className="flex flex-wrap gap-3">
+              {group.skills.map((skill, j) => (
+                <div
+                  key={j}
+                  className="flex items-center gap-2 rounded-full border border-white/10 px-4 py-2 text-sm text-slate-200 transition-all duration-150 hover:border-emerald-300/40 hover:text-emerald-200"
+                >
+                  <span className="text-base text-amber-300">{skill.icon}</span>
+                  <span>{skill.name}</span>
                 </div>
               ))}
             </div>
           </motion.div>
         ))}
-      </motion.div>
-    </div>
+      </div>
+    </section>
   );
 }

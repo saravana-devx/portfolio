@@ -1,112 +1,73 @@
 import React from "react";
-
-// import profileImage from "../utils/Images/profile.jpeg";
-
 import { motion } from "framer-motion";
-import TypingLaptop from "./TypingLaptop";
+import SectionIntro from "./SectionIntro";
 
-const cardVariants = {
-  offscreen: (index) => ({
-    x: index % 2 === 0 ? -200 : 200,
-    opacity: 0,
-  }),
-  onscreen: {
-    x: 0,
-    opacity: 1,
-    transition: {
-      type: "tween",
-      ease: "easeIn",
-      duration: 0.8,
-    },
-  },
-};
+const highlights = [
+  { label: "Experience", value: "9+ months in production systems" },
+  { label: "Projects", value: "2 personal Go systems" },
+  { label: "Primary stack", value: "Go + React" },
+  { label: "Location", value: "Mumbai, India" },
+];
 
-const About = () => {
+const About = ({ aboutRef }) => {
   return (
     <motion.div
-      className="md:flex max-w-6xl mx-auto mt-24"
-      initial={{ opacity: 0, y: 50 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8 }}
+      ref={aboutRef}
+      className="space-y-8"
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ duration: 0.7 }}
     >
-      <div className="flex-1">
-        <p className="text-4xl font-semibold">
-          ⚡ <span className="text-green-400">About Me</span>
-        </p>
-        <motion.p
-          className="text-gray-400 mt-2"
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.5, duration: 0.6 }}
-        >
-          Hey! I'm <span className="text-green-400 font-medium">Saravana</span>,
-          a passionate self-taught developer who's been fascinated by computers
-          and technology from an early age.
-        </motion.p>
-        <motion.p
-          className="text-gray-400 mt-4"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1, duration: 0.8 }}
-        >
-          I started by exploring how things work behind the scenes, which led me
-          to dive into coding. Over time, I’ve worked with various languages and
-          frameworks, focusing on{" "}
-          <span className="text-green-400 font-medium">
-            full-stack development
-          </span>
-          . I’m also learning{" "}
-          <span className="text-green-400 font-medium">cloud technologies </span>
-          like AWS and expanding my knowledge in backend systems.
-        </motion.p>
-        <motion.p
-          className="text-gray-400 mt-4"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.5, duration: 0.8 }}
-        >
-          I'm always looking to{" "}
-          <span className="text-green-400 font-medium">
-            build impactful projects
-          </span>
-          , improve performance, and automate workflows. Currently, I'm focused
-          on{" "}
-          <span className="text-green-400 font-medium">
-            Web Development, Microservices, and DevOps
-          </span>
-          .
-        </motion.p>
-        <motion.p
-          className="text-gray-400 mt-4"
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 2, duration: 0.5 }}
-        >
-          When I'm not coding, you’ll find me{" "}
-          <span className="text-green-400 font-medium">playing games</span> or
-          &nbsp;
-          <span className="text-green-400 font-medium">
-            watching tech talks
-          </span>
-          !
-        </motion.p>
+      <SectionIntro
+        eyebrow="About"
+        heading="I like systems that stay calm under pressure."
+        headingClassName="max-w-2xl"
+      />
+
+      <div className="border-t border-white/10 pt-8">
+        <div className="max-w-4xl space-y-5 section-copy">
+          <p>
+            I’m a full-stack engineer with a strong backend center of gravity.
+            My best work usually sits where product needs, reliability, and
+            messy real-world constraints all meet.
+          </p>
+          <p>
+            At <span className="text-amber-300">Human Quotient Pvt. Ltd.</span>,
+            I work on Qoneqt and own critical pieces of the analytics
+            infrastructure. That includes ClickHouse on bare metal, Cloudflare
+            R2, RabbitMQ-based workflows, and the media upload path with
+            pre-signed URLs and multi-quality processing.
+          </p>
+          <p>
+            Outside work, I build Go systems that force me to think about
+            concurrency, delivery guarantees, and failure modes. I enjoy the
+            kind of engineering where correctness matters just as much as
+            speed.
+          </p>
+          <p>
+            I also care about the frontend experience. Good UI should feel
+            deliberate, readable, and trustworthy instead of just technically
+            functional.
+          </p>
+        </div>
+
+        <div className="mt-10 grid gap-4 sm:grid-cols-2">
+          {highlights.map((item) => (
+            <div
+              key={item.label}
+              className="border-t border-white/10 pt-4"
+            >
+              <p className="font-mono text-xs uppercase tracking-[0.24em] text-slate-500">
+                {item.label}
+              </p>
+              <p className="mt-3 text-lg font-medium leading-7 text-slate-100">
+                {item.value}
+              </p>
+            </div>
+          ))}
+        </div>
       </div>
-      <motion.div
-        className="flex-1 flex justify-center items-center mt-16 md:mt-0"
-        initial="offscreen"
-        whileInView="onscreen"
-        // viewport={{ amount: 0.8 }}
-        viewport={{ amount: 0.2 }}
-        variants={cardVariants}
-        custom={1}
-      >
-        {/* <img
-          src={profileImage}
-          className="max-w-72 h-72 object-cover rounded-full shadow-lg border-4 border-gray-700"
-          alt="Profile-Picture"
-        /> */}
-        <TypingLaptop />
-      </motion.div>
     </motion.div>
   );
 };

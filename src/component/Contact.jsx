@@ -1,160 +1,110 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Mail, MapPin, Phone } from "lucide-react";
 import { motion } from "framer-motion";
 import { useForm } from "@formspree/react";
+import SectionIntro from "./SectionIntro";
+
+const contactInfo = [
+  { icon: <MapPin size={18} />, label: "Address", value: "Mumbai, India" },
+  { icon: <Mail size={18} />, label: "Email", value: "saravana.devx@gmail.com" },
+  { icon: <Phone size={18} />, label: "Phone", value: "+91 86690 61864" },
+];
 
 const Contact = ({ contactRef }) => {
   const [state, handleSubmit] = useForm("mkgrjaay");
 
-  // eslint-disable-next-line
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    subject: "",
-    message: "",
-  });
-
-  useEffect(() => {
-    if (state.succeeded) {
-      setFormData({
-        name: "",
-        email: "",
-        phone: "",
-        subject: "",
-        message: "",
-      });
-    }
-  }, [state.succeeded]);
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-  };
   return (
-    <motion.form
-      onSubmit={handleSubmit}
-      action="https://formspree.io/f/mkgrjaay"
-      method="POST"
+    <motion.div
       ref={contactRef}
-      className="max-w-5xl mx-auto py-16 px-4"
-      initial={{ opacity: 0, y: 50 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8, ease: "easeOut" }}
+      className="grid gap-8 lg:grid-cols-[0.78fr_1.22fr]"
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ duration: 0.7 }}
     >
-      {/* Header */}
-      <div>
-        <h1 className="text-center text-green-400 text-5xl font-semibold">
-          Contact Me
-        </h1>
-        <p className="text-center my-4 text-2xl text-gray-400">
-          Feel free to reach out anytime!
-        </p>
-      </div>
+      <SectionIntro
+        eyebrow="Contact"
+        heading="If the team is ambitious, I’m interested."
+        description="Reach out for backend roles, product engineering work, or teams that need someone comfortable across architecture and UI cleanup."
+      />
 
-      {/* Contact Details & Form */}
-      <div className="flex flex-col justify-center md:flex-row mt-16 space-y-8 md:space-y-0 md:space-x-8">
-        {/* Contact Info */}
-        <motion.div
-          className="flex flex-col w-full md:w-1/3 space-y-8"
-          initial={{ opacity: 0, x: -50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
-        >
-          {[
-            {
-              icon: <MapPin size={40} />,
-              label: "Address",
-              value: "Mumbai,India",
-            },
-            {
-              icon: <Mail size={40} />,
-              label: "Email",
-              value: "saravana8261@gmail.com",
-            },
-            {
-              icon: <Phone size={40} />,
-              label: "Phone",
-              value: "+91 86690 61864",
-            },
-          ].map((item, index) => (
-            <div key={index} className="flex items-center">
-              <div className="text-green-400 mr-4">{item.icon}</div>
-              <div>
-                <h2 className="text-xl font-semibold">{item.label}</h2>
-                <p className="text-gray-400">{item.value}</p>
+      <div className="grid gap-8 md:grid-cols-[0.72fr_1.28fr]">
+        <div className="space-y-5">
+          {contactInfo.map((item, index) => (
+            <div key={index} className="border-t border-white/10 pt-5">
+              <div className="flex items-start gap-4">
+                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-amber-300/20 text-amber-300">
+                  {item.icon}
+                </div>
+                <div>
+                  <p className="mb-1 font-mono text-xs uppercase tracking-[0.24em] text-slate-500">
+                    {item.label}
+                  </p>
+                  <p className="text-white">{item.value}</p>
+                </div>
               </div>
             </div>
           ))}
-        </motion.div>
+        </div>
 
-        {/* Contact Form */}
-        <motion.div
-          className="w-full md:w-2/3 bg-gray-900 p-8 rounded-xl shadow-lg"
-          initial={{ opacity: 0, x: 50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
+        <form
+          onSubmit={handleSubmit}
+          action="https://formspree.io/f/mkgrjaay"
+          method="POST"
+          className="border-t border-white/10 pt-6"
         >
-          <div className="space-y-6">
+          <div className="grid sm:grid-cols-2 gap-4 mb-4">
             <input
               type="text"
               name="name"
-              placeholder="Your Name"
+              placeholder="Your name"
               required
-              className="w-full px-4 py-3 bg-gray-800 text-white rounded-xl outline-none focus:ring-2 focus:ring-green-400"
-              onChange={handleChange}
+              className="w-full rounded-full border border-white/10 bg-transparent px-4 py-3 text-white outline-none transition-colors focus:border-amber-300"
             />
             <input
               type="email"
               name="email"
-              placeholder="Your Email"
+              placeholder="Your email"
               required
-              className="w-full px-4 py-3 bg-gray-800 text-white rounded-xl outline-none focus:ring-2 focus:ring-green-400"
-              onChange={handleChange}
+              className="w-full rounded-full border border-white/10 bg-transparent px-4 py-3 text-white outline-none transition-colors focus:border-amber-300"
             />
+          </div>
+          <div className="grid sm:grid-cols-2 gap-4 mb-4">
             <input
               type="text"
               name="phone"
-              placeholder="Your Phone"
-              className="w-full px-4 py-3 bg-gray-800 text-white rounded-xl outline-none focus:ring-2 focus:ring-green-400"
-              onChange={handleChange}
+              placeholder="Phone (optional)"
+              className="w-full rounded-full border border-white/10 bg-transparent px-4 py-3 text-white outline-none transition-colors focus:border-amber-300"
             />
             <input
               type="text"
               name="subject"
               placeholder="Subject"
-              className="w-full px-4 py-3 bg-gray-800 text-white rounded-xl outline-none focus:ring-2 focus:ring-green-400"
-              onChange={handleChange}
+              className="w-full rounded-full border border-white/10 bg-transparent px-4 py-3 text-white outline-none transition-colors focus:border-amber-300"
             />
-            <textarea
-              name="message"
-              placeholder="Write your message here"
-              required
-              className="w-full px-4 py-3 bg-gray-800 text-white rounded-xl outline-none focus:ring-2 focus:ring-green-400 h-32"
-              onChange={handleChange}
-            />
-            <button
-              type="submit"
-              disabled={state.submitting}
-              className="w-full py-3 bg-green-500 hover:bg-green-600 transition-colors duration-300 rounded-xl text-white text-lg font-semibold"
-            >
-              {state.submitting ? "Sending..." : "Send Message"}
-            </button>
-            {/* <textarea
-              placeholder="Write your message here"
-              className="w-full px-4 py-3 bg-gray-800 text-white rounded-xl outline-none focus:ring-2 focus:ring-green-400 h-32"
-            ></textarea>
-            <button
-              type="submit"
-              className="w-full py-3 bg-green-500 hover:bg-green-600 transition-colors duration-300 rounded-xl text-white text-lg font-semibold"
-              disabled={state.submitting}
-            >
-              Send Message
-            </button> */}
           </div>
-        </motion.div>
+          <textarea
+            name="message"
+            placeholder="Write your message here"
+            required
+            rows={5}
+            className="mb-6 w-full resize-none rounded-[28px] border border-white/10 bg-transparent px-4 py-3 text-white outline-none transition-colors focus:border-amber-300"
+          />
+          <button
+            type="submit"
+            disabled={state.submitting}
+            className="w-full rounded-full bg-amber-300 py-3 font-mono text-sm font-medium uppercase tracking-[0.2em] text-slate-950 transition-colors hover:bg-amber-200 disabled:opacity-60"
+          >
+            {state.submitting ? "Sending..." : "Send message"}
+          </button>
+          {state.succeeded && (
+            <p className="mt-4 font-mono text-sm text-emerald-300">
+              Message sent. I&apos;ll get back to you soon.
+            </p>
+          )}
+        </form>
       </div>
-    </motion.form>
+    </motion.div>
   );
 };
 

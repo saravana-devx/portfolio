@@ -2,6 +2,48 @@
 @tailwind components;
 @tailwind utilities;
 
-html {
-  --cursor-color: #66BB6A;
+:root {
+  --cursor-color: #f59e0b;
+}
+
+.app-shell {
+  position: relative;
+  overflow: hidden;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top, rgba(245, 158, 11, 0.14), transparent 30%),
+    radial-gradient(circle at 20% 20%, rgba(16, 185, 129, 0.14), transparent 32%),
+    linear-gradient(180deg, #07111f 0%, #08111a 52%, #040910 100%);
+}
+
+.app-noise {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(148, 163, 184, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(148, 163, 184, 0.03) 1px, transparent 1px);
+  background-size: 32px 32px;
+  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.8), transparent 92%);
+  pointer-events: none;
+}
+
+.app-gradient {
+  position: absolute;
+  top: 6rem;
+  height: 18rem;
+  width: 18rem;
+  border-radius: 9999px;
+  filter: blur(80px);
+  opacity: 0.28;
+  pointer-events: none;
+}
+
+.app-gradient-left {
+  left: -4rem;
+  background: rgba(16, 185, 129, 0.5);
+}
+
+.app-gradient-right {
+  right: -5rem;
+  background: rgba(245, 158, 11, 0.44);
 }
